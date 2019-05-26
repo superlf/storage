@@ -26,8 +26,8 @@
     </environments>
     
     <mappers>
-        <mapper resource="com/login/dao/LoginMapper.xml"/>
-        <mapper resource="com/commons/pubfun/PubFunMapper.xml"/>
+        <mapper resource="com/bean/mapper/LoginMapper.xml"/>
+        <mapper resource="com/bean/mapper/PubFunMapper.xml"/>
     </mappers>
     
 
