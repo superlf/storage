@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commons.pubfun.PubFunMapper">
+
+    <select id="S_maxno" parameterType="string" resultType="Integer">
+        SELECT max_value FROM maxserial WHERE serial_type=#{string}
+    </select>
+    
+    <update id="U_maxno" parameterType="map">
+        UPDATE maxserial SET max_value=#{serialno} WHERE serial_type=#{codetype}
+    </update>
+
+    <insert id="I_maxno" parameterType="map">
+        INSERT INTO maxserial(serial_type,max_value,makedate,resource,remark)
+        VALUES(#{codetype},#{serialno},#{makedate},#{resource},NULL);
+    </insert>
+
+
+
+
+</mapper>
