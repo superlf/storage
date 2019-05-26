@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+>
+    <!-- 启动SpringMVC注解 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 扫描注解所在的包 -->
+    <!-- <context:annotation-config></context:annotation-config> -->
+    <context:component-scan base-package="com.**.web" ></context:component-scan>
+
+    <!-- 排除静态资源 -->
+    <mvc:default-servlet-handler />
+    <mvc:resources location="/WEB-INF/resource/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/resource/" mapping="/img/**"/>
+    <mvc:resources location="/WEB-INF/resource/" mapping="/js/**"/>
+    
+    
+    <!-- JSP视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="order" value="1"/>
+        <property name="prefix" value="/WEB-INF/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    <!-- 默认显示页面  mav.setViewName("jsp/login")-->
+    <mvc:view-controller path="/index" view-name="jsp/login"/> 
+    
+    
+    <!-- 配置文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <description>文件上传的格式 和 最大为 10MB</description>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+    
+    
+    
+    
+</beans>
