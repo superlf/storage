@@ -4,6 +4,7 @@ import com.bean.schema.LoginLog;
 import com.bean.schema.User;
 import com.commons.pubfun.PFDate;
 import com.commons.pubfun.PFSerialno;
+import com.commons.utils.LoginInterceptor;
 import com.login.dao.LoginDao;
 import com.login.dao.impl.LoginDaoImpl;
 import com.login.service.LoginService;
@@ -25,8 +26,8 @@ public class LoginServiceImpl implements LoginService {
             ll.setLogin_date(PFDate.getCurrentDate());//登陆日期
             ll.setAccount(user.getAccount());//登陆账号
             ll.setLogin_time(PFDate.getCurryTime());//登陆时间
-            ll.setLogin_ip("");//IP地址
-                        
+            ll.setLogin_ip(LoginInterceptor.getIPAddrs());//IP地址
+            
             if(!this.loginDao.addLoginLog(ll)){
                 throw new RuntimeException("插入登陆日志异常！");
             }

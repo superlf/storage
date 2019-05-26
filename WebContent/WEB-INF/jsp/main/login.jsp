@@ -14,9 +14,12 @@
 		<title>H5模版:</title>
 	</head>
 	<body>
-		<h2>胖先生的个人博客:http://pangsir8983.github.io</h2>
-		<h2>电话:15584123623</h2>
-		<h2>QQ: 83604162</h2>
+		<h2>登陆页面</h2>
+        <form action="sys/login" method="post">
+            <input type="text" name = "account" id = "account" value="wukong">
+            <input type="password" name = "password" id = "password" value="wukong">
+            <input type="submit" value="登陆" >
+        </form>
 		
 	</body>
 </html>

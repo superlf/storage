@@ -27,8 +27,20 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     
+    <!-- 配置登陆拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/sys/**"/>
+            <mvc:exclude-mapping path="/sys/login"/>
+            <bean class="com.commons.utils.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
     <!-- 默认显示页面  mav.setViewName("jsp/login")-->
-    <mvc:view-controller path="/index" view-name="jsp/login"/> 
+    <mvc:view-controller path="/index" view-name="jsp/main/login"/> 
+    
+    
+    
     
     
     <!-- 配置文件上传 -->
