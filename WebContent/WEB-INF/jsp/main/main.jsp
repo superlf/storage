@@ -8,7 +8,6 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-
 		<base href="${basePath}">
 		<meta charset="UTF-8">
 		<title>管理系统</title>
@@ -17,6 +16,11 @@
         <script type="text/javascript" src="js/admin/js/jquery.js"></script>
         <script type="text/javascript" src="js/admin/js/admin.js"></script>
 	</head>
+    <script type="text/javascript">
+        function timeNow(){var nowDate = new Date();document.getElementById("time").innerHTML = nowDate.getFullYear()+"年"+
+        (nowDate.getMonth()+1)+"月"+nowDate.getDate()+"日"+" "+nowDate.getHours()+":"+nowDate.getMinutes()+":"+nowDate.getSeconds();}
+        window.setInterval("timeNow()",1000);
+	</script>
 	<body>
         <div class="backAdmin">
         <div class="top">
@@ -50,14 +54,14 @@
 
             <div class="topright">
                 <ul>
-                 
+                    <li><label style="width:190px;" class="fr_1" id="time"></label></li>
                     <li><a href="javascript:;" id="loginOut">安全退出</a></li>
                 </ul>
     
                 <div class="user">
                     <img src="img/admin/images/user_photo.png" alt="用户头像"/>
-                    <span>码迷码迷吽</span>
-                    <b>5</b>
+                    <span>${sessionScope.session_user.userName}</span>
+                    <!-- <b>5</b> -->
                 </div>
             </div>
         </div>
@@ -180,7 +184,7 @@
         </div>
         <div class="bottom">
             <span>superlfx。仅供学习交流，请勿用于任何商业用途</span>
-            <i> 版权所有 @https://github.com/superlf </i>
+            <i> 版权所有 @https://github.com/superlfx </i>
         </div>
     </div>
         

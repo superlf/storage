@@ -18,7 +18,7 @@ import com.login.service.impl.LoginServiceImpl;
 public class LoginController {
 
     private static final String SESSION_USER ="session_user";
-    private LoginService loginService = new LoginServiceImpl();
+    private static LoginService loginService = new LoginServiceImpl();
     Logger log = Logger.getLogger(getClass());
     
     
@@ -27,7 +27,7 @@ public class LoginController {
     public String login(User user,HttpServletRequest request){
         this.log.info("LoginInfo:"+"Account:"+user.getAccount()+ "Password:"+user.getPassword());
         
-        user = this.loginService.login(user);
+        user = loginService.login(user);
         
         HttpSession session = request.getSession();
         session.setAttribute(SESSION_USER, user);
@@ -35,9 +35,17 @@ public class LoginController {
         return "redirect:/sys/main";
     }
 
+    
     @GetMapping("/loginout")
-    public String loginout(HttpServletRequest request){
+    public static String loginout(HttpServletRequest request){
         HttpSession session = request.getSession();
+        User user=(User)session.getAttribute(SESSION_USER);
+        
+//        user.getSpareString1();
+        
+        boolean b = loginService.loginOut(user);
+        
+        
         session.invalidate();
         
         return "redirect:/index";

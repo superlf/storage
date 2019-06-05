@@ -49,7 +49,7 @@ public class PFSerialno {
             Integer serialno = this.sqlSession.selectOne(this.MAPPER+"S_maxno",codetype);
             
             Map<String,Object> map = new HashMap<String,Object>();
-            if(serialno==null||serialno==0){
+            if(serialno==null){
                 serialno = 1;
                 map.put("codetype", codetype);
                 map.put("serialno", serialno);
