@@ -11,11 +11,11 @@
         <insert id="I_loginLog" parameterType="com.bean.schema.LoginLog" useGeneratedKeys="true" keyProperty="login_id">
             INSERT INTO loginlog(login_id,user_id,login_date,login_time,login_ip)VALUES(#{login_id},#{account},#{login_date},#{login_time},#{login_ip})
         </insert>
-        
+
         <update id="U_user_loginID" parameterType="map" >
             UPDATE `user` SET spareString2=spareString1,spareString1=#{LoginID} WHERE userId=#{Account}
         </update>
-    
+
         <update id="U_loginLog_DateTime" parameterType="map" >
             UPDATE loginlog SET out_date=#{curryDate},out_time=#{curryTime} WHERE login_id=#{loginID}
         </update>
