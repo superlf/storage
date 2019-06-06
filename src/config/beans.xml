@@ -7,14 +7,4 @@
         <property name="account" value="wukong" />
         <property name="password" value="wukong123"/>
     </bean>
-
-    <bean id="userDao" class="test.UserDaoImpl"/>
-
-    <bean id="userService" class="test.UserServiceImpl" >
-        <property name="ud" ref="userDao"/>
-    </bean>
-    <bean id="userController" class="test.UserControl" >
-        <property name="us" ref="userService"/>
-    </bean>
-
 </beans>
