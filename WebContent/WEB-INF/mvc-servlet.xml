@@ -10,7 +10,9 @@
 
     <!-- 扫描注解所在的包 -->
     <!-- <context:annotation-config></context:annotation-config> -->
-    <context:component-scan base-package="com.**.web" ></context:component-scan>
+    <context:component-scan base-package="com.**.web" >
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 排除静态资源 -->
     <mvc:default-servlet-handler />
@@ -28,20 +30,17 @@
     </bean>
     
     <!-- 配置登陆拦截器 -->
-    <mvc:interceptors>
+<!--     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/sys/**"/>
+            <mvc:mapping path="/"/>
             <mvc:exclude-mapping path="/sys/login"/>
             <bean class="com.commons.utils.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+     -->
     
     <!-- 默认显示页面  mav.setViewName("jsp/login")-->
     <mvc:view-controller path="/index" view-name="jsp/main/login"/> 
-    
-    
-    
-    
     
     <!-- 配置文件上传 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

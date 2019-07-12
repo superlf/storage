@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.bean.schema.LoginLog;
 import com.bean.schema.User;
@@ -12,6 +14,7 @@ import com.commons.exception.DataException;
 import com.commons.utils.MyBatisUtils;
 import com.login.dao.LoginDao;
 
+@Repository
 public class LoginDaoImpl implements LoginDao {
     static Logger log = Logger.getLogger(LoginDaoImpl.class.getName()); 
     private final String MAPPER = "com.login.dao.LoginMapper.";
@@ -28,6 +31,9 @@ public class LoginDaoImpl implements LoginDao {
                 log.info("获得该用户的信息："+user.toString());
                 return user;
             }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new RuntimeException("123123123");
         }finally{
             MyBatisUtils.closeSqlSession(this.sqlSession);
         }

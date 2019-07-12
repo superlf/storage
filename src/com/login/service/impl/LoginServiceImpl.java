@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bean.schema.LoginLog;
 import com.bean.schema.User;
@@ -14,9 +16,13 @@ import com.login.dao.LoginDao;
 import com.login.dao.impl.LoginDaoImpl;
 import com.login.service.LoginService;
 
+
+@Service
 public class LoginServiceImpl implements LoginService {
     static Logger log = Logger.getLogger(LoginServiceImpl.class.getName()); 
-    private LoginDao loginDao = new LoginDaoImpl();
+    
+    @Autowired
+    private LoginDao loginDao;
     
     @Override
     public User login(User user) {
